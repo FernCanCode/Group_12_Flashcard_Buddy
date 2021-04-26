@@ -48,7 +48,6 @@ public class StudyController {
     private Button studyNext;
     
     
-    
     public void handleExit(ActionEvent event) throws IOException
     {
     	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
