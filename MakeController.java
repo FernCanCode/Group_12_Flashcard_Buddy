@@ -26,7 +26,8 @@ import javafx.stage.Stage;
 
 public class MakeController {
 	Model model = new Model();
-	String front=null,back=null;
+	//being erased between scenes
+	String front="",back="";
 	@FXML
 	private AnchorPane mainPane;
 
@@ -48,6 +49,9 @@ public class MakeController {
     @FXML
     private Button makeBackBack;
 
+    //progress note
+    //try to put next and create in some method in model
+    
 
     //Changes Scene to MakeBack
     //Stores the text entered by the user, to be used on the front of the flash card
@@ -55,15 +59,19 @@ public class MakeController {
     {
     	//Code for storing information from user entered into 'makeFrontText' TextField
     	//This information will be used to populate the front of the flashcard
-    	front = makeFrontText.getText();
+    	front = makeFrontText.getText().toString();
     	model.handleNext(front);
     	//Scene Transition
     	//To Be executed after information has been stored from user
-    	mainPane = FXMLLoader.load(getClass().getResource("MakeBack.fxml")); //pane you are GOING to
-    	Scene scene = new Scene(mainPane); //pane you are going to SHOW
-    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
-    	window.setScene(scene);
-    	window.show();
+    	//if statement validates flashcard input isn't empty
+    	if(front.length()>0)
+    	{
+    		mainPane = FXMLLoader.load(getClass().getResource("MakeBack.fxml")); //pane you are GOING to
+    		Scene scene = new Scene(mainPane); //pane you are going to SHOW
+    		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
+    		window.setScene(scene);
+    		window.show();
+    	}
     }
     
     public void handleCancel(ActionEvent event) throws IOException

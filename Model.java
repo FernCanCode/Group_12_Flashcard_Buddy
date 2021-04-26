@@ -20,7 +20,7 @@ public class Model {
 	
 	HashMap<String, String> flashcardMap = new HashMap<String,String>();
 	HashMap<String,String> indexMap = new HashMap<String,String>();
-	int indx = 0, ttlIndex = 0;
+	int indx = 0, total = 0;
 	String front, ndx=Integer.toString(indx);
 	Alert a = new Alert(AlertType.NONE);
 	
@@ -29,12 +29,14 @@ public class Model {
 	//handleNext
 	public void handleNext(String frontText)
 	{	
-		if(frontText.length() > 1)
+		if(frontText.length() > 0)
 		{
-			ndx = Integer.toString(ttlIndex);
+			ndx = Integer.toString(total);
 			indexMap.put(ndx, frontText);
 			flashcardMap.put(frontText, null);
 			front = frontText;
+			//debug println
+			System.out.println(flashcardMap.toString());
 		}
 		else
 		{
@@ -46,13 +48,19 @@ public class Model {
 	//handleCreate
 	public void handleCreate(String backText)
 	{
-		if(backText.length() > 1)
+		//debugging println
+		System.out.println(flashcardMap.toString());
+		if(backText.length() > 0)
 		{
+			ndx = Integer.toString(total);
+			front = indexMap.get(ndx);
 			flashcardMap.put(front, backText);
-			indx++;
+			total++;
 			a.setAlertType(AlertType.CONFIRMATION);
 			a.setContentText("Flashcard successfully created.");
 			a.show();
+			//debugging pritnln
+			System.out.println(flashcardMap.toString());
 		}
 		else
 		{
@@ -97,6 +105,7 @@ public class Model {
 	//handleFlip
 	public String handleFlip()
 	{
+		ndx=Integer.toString(indx);
 		String frontKey = indexMap.get(ndx);
 		String frontDisplay = flashcardMap.get(frontKey);
 		return frontDisplay;
@@ -104,7 +113,9 @@ public class Model {
 	//handleDisplay
 	public String handleDisplay()
 	{
-		String frontKey = indexMap.get(ndx);
+		ndx=Integer.toString(indx);
+		String frontKey = "NULL";
+		frontKey = indexMap.get(ndx);
 		return frontKey;
 	}
 	
