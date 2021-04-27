@@ -8,6 +8,8 @@ Debug Model.java and MakeController.java interaction
      Possible fix would be to write out to a .properties file, this would also allow the user to save their flashcards between sessions
 Application.css is completely empty. This needs to be filled with jpgs for the various buttons and scene elements. The scenes are currently very barebones, and we should try
     to make it look nice and presentable before it's due.
+Previous and Next buttons on Study.fxml need work to get functional 
+        This might have to wait until after we fix the debug issue.
 Stretch Goals:
   These are features which would be nice to have included, but are not necessary for the basic function of the application
       1) Ability for user to delete individual flashcards from their collection
