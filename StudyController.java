@@ -82,7 +82,8 @@ public class StudyController {
     //Changes the flashcard to the next card
     public void handleNext(ActionEvent event) throws IOException
     {
-    	model.handleNext();
+    	model.handleNext(index);
+    	if(index < model.keyList.size())
     	index++;
     	String front = model.handleDisplay(index);
     	

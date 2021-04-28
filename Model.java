@@ -158,9 +158,9 @@ public class Model {
 		}
 	}
 //	handleNext
-	public void handleNext()
+	public void handleNext(int index)
 	{
-		if(indx < keyList.size())
+		if(index < keyList.size()-1)
 		{
 			indx++;
 		}
@@ -183,7 +183,14 @@ public class Model {
 	//handleDisplay
 	public String handleDisplay(int flashIndex)
 	{
+		if(flashIndex < keyList.size())
+		{
 		display = keyList.get(flashIndex);
+		}
+		else
+		{
+			display = keyList.get(flashIndex-1);
+		}
 		//ndx = Integer.toString(flashIndex);
 		//display = indexMap.get(ndx);
 		System.out.println("test hDis");
