@@ -27,9 +27,6 @@ import javafx.scene.control.Alert.AlertType;
 public class Model {
 	
 	HashMap<String, String> flashcardMap = new HashMap<String,String>();
-	//Removed for now, relying on an ArrayList<> to handle the flashcard navigation
-	//will be revisited once we get the flashcards working
-	//HashMap<String,String> indexMap = new HashMap<String,String>();
 	Set<String> keySet = flashcardMap.keySet();
 	ArrayList<String> keyList = new ArrayList<String>(keySet);
 	int indx = 0;
@@ -37,41 +34,30 @@ public class Model {
 	Alert a = new Alert(AlertType.NONE);
 	//Instantiates a Properties object 
 	Properties properties = new Properties();
-	Properties indexProperties = new Properties();
+
 		
 	//Instantiates a file object
 	File file = new File("flashcardCollection.properties");
-	File indexFile = new File("flashcardIndex.properties");
+
 	FileOutputStream writer = null;
 	FileOutputStream indexWriter = null;
 		
 		public Model()
 		{
-			System.out.println("test statement Model()");
-			//copypasted code from previous Model
-			//needs to be modified to fit current needs
 			try 
 			{
 	    		
 		    	//File reader
 		    	//reads and populates properties with the content of the file
 		    	FileInputStream reader=new FileInputStream(file);
-		    	FileInputStream indexReader = new FileInputStream(indexFile);
 		        properties.load(reader);
-		        indexProperties.load(indexReader);
 		        reader.close();
-		        indexReader.close();
 		        properties.load(new FileInputStream("flashcardCollection.properties"));
-		        indexProperties.load(new FileInputStream("flashcardIndex.properties"));
 		        //populates the hashmap inventoryMap with the contents of properties
 		        for(String key: properties.stringPropertyNames())
 		        {
 		        	flashcardMap.put(key, properties.get(key).toString());
 		        }
-//		        for(String key: indexProperties.stringPropertyNames())
-//		        {
-//		        	indexMap.put(key, indexProperties.get(key).toString());
-//		        }
 		        keySet = flashcardMap.keySet();
 		        keyList = new ArrayList<String>(keySet);
 		        
@@ -102,11 +88,8 @@ public class Model {
 	{	
 		if(frontText.length() > 0 && backText.length() > 0)
 		{	
-			//indexMap.put(ndx, frontText);
-//			indexMap.put(ndx, frontText);
 			flashcardMap.put(frontText, backText);
 			properties.putAll(flashcardMap);
-//			indexProperties.putAll(indexMap);
 			a.setAlertType(AlertType.CONFIRMATION);
 			a.setContentText("Flashcard successfully created.");
 			a.show();
@@ -114,7 +97,6 @@ public class Model {
 			try 
 			{
 				writer = new FileOutputStream(file,true);
-				indexWriter = new FileOutputStream(indexFile, true);
 			}
 			catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -123,13 +105,10 @@ public class Model {
 			try 
 			{
 				properties.store(writer, null);
-				indexProperties.store(indexWriter, null);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}    			
-			//debug println
-			System.out.println(flashcardMap.toString());
 		}
 		else
 		{
@@ -174,8 +153,6 @@ public class Model {
 	//handleFlip
 	public String handleFlip(int flashIndex)
 	{
-		//ndx = Integer.toString(flashIndex);
-		//String backDisplay = flashcardMap.get(indexMap.get(ndx));
 		String backDisplay = flashcardMap.get(keyList.get(flashIndex));
 		System.out.println(backDisplay);
 		return backDisplay;
@@ -192,9 +169,6 @@ public class Model {
 		{
 			display = keyList.get(flashIndex-1);
 		}
-		//ndx = Integer.toString(flashIndex);
-		//display = indexMap.get(ndx);
-		System.out.println("test hDis");
 		return display;
 		
 
