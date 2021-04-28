@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 public class StudyController {
 	Model model = new Model();
-	String front,back;
+	int index = 0;
 	@FXML
 	private AnchorPane mainPane;
 	
@@ -60,7 +60,8 @@ public class StudyController {
     //Handles the default display when the Study scene is first opened
     public void handleBegin()
     {
-    	String defaultText = model.handleDisplay();
+    	model.currentIndex(index);
+    	String defaultText = model.handleDisplay(index);
     	studyText.setText(defaultText);
     }
     
@@ -70,8 +71,11 @@ public class StudyController {
     {
     	
     	model.handlePrevious();
-    	front = model.handleDisplay();
+    	if(index > 0)
+        	index--;
+    	String front = model.handleDisplay(index);
     	studyText.setText(front);
+    	
     	
     }
     
@@ -79,7 +83,9 @@ public class StudyController {
     public void handleNext(ActionEvent event) throws IOException
     {
     	model.handleNext();
-    	front = model.handleDisplay();
+    	index++;
+    	String front = model.handleDisplay(index);
+    	
     	studyText.setText(front);
     }
     
@@ -87,7 +93,8 @@ public class StudyController {
     //This will just change the value displayed within the TextField 'studyText'
     public void handleFlip(ActionEvent event) throws IOException
     {
-    	back = model.handleFlip();
+    	String back = model.handleFlip(index);
+    	
     	studyText.setText(back);
     }
 

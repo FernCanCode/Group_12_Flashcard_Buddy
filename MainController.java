@@ -40,7 +40,7 @@ public class MainController {
     @FXML
     public void handleMake(ActionEvent event) throws IOException
     {
-    	mainPane = FXMLLoader.load(getClass().getResource("MakeFront.fxml")); //pane you are GOING to
+    	mainPane = FXMLLoader.load(getClass().getResource("Make.fxml")); //pane you are GOING to
     	Scene scene = new Scene(mainPane); //pane you are going to SHOW
     	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
     	window.setScene(scene);

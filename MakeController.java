@@ -20,7 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -28,26 +28,22 @@ public class MakeController {
 	Model model = new Model();
 	//being erased between scenes
 	String front="",back="";
+	
 	@FXML
 	private AnchorPane mainPane;
 
-    @FXML
-    private TextArea makeFrontText;
 
     @FXML
-    private Button makeFrontNext;
+    private TextField makeBackText;
+
+    @FXML
+    private TextField makeFrontText;
 
     @FXML
     private Button makeFrontCancel;
 
     @FXML
-    private TextArea makeBackText;
-
-    @FXML
-    private Button makeBackCreate;
-
-    @FXML
-    private Button makeBackBack;
+    private Button makeCardCreate;
 
     //progress note
     //try to put next and create in some method in model
@@ -55,23 +51,16 @@ public class MakeController {
 
     //Changes Scene to MakeBack
     //Stores the text entered by the user, to be used on the front of the flash card
-    public void handleNext(ActionEvent event) throws IOException
+    public void handleCreate(ActionEvent event) throws IOException
     {
-    	//Code for storing information from user entered into 'makeFrontText' TextField
-    	//This information will be used to populate the front of the flashcard
-    	front = makeFrontText.getText().toString();
-    	model.handleNext(front);
-    	//Scene Transition
-    	//To Be executed after information has been stored from user
-    	//if statement validates flashcard input isn't empty
-    	if(front.length()>0)
-    	{
-    		mainPane = FXMLLoader.load(getClass().getResource("MakeBack.fxml")); //pane you are GOING to
-    		Scene scene = new Scene(mainPane); //pane you are going to SHOW
-    		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
-    		window.setScene(scene);
-    		window.show();
-    	}
+    	front = makeFrontText.getText();
+    	back = makeBackText.getText();
+    	model.handleCreate(front, back);
+    	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
+    	Scene scene = new Scene(mainPane); //pane you are going to SHOW
+    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
+    	window.setScene(scene);
+    	window.show();
     }
     
     public void handleCancel(ActionEvent event) throws IOException
@@ -83,28 +72,9 @@ public class MakeController {
     	window.show();
     }
     
-    public void handleBack(ActionEvent event) throws IOException
-    {
-    	mainPane = FXMLLoader.load(getClass().getResource("MakeFront.fxml")); //pane you are GOING to
-    	Scene scene = new Scene(mainPane); //pane you are going to SHOW
-    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
-    	window.setScene(scene);
-    	window.show();
-    }
+
     
-    //handles the creation of the flashcard
-    //Stores information entered into text box by user
-    public void handleCreate(ActionEvent event) throws IOException
-    {
-    	back = makeBackText.getText();
-    	model.handleCreate(back);
-    	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
-    	Scene scene = new Scene(mainPane); //pane you are going to SHOW
-    	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
-    	window.setScene(scene);
-    	window.show();
-    }
-    
+
 
 }
 
