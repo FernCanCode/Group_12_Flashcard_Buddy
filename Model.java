@@ -153,7 +153,15 @@ public class Model {
 	//handleFlip
 	public String handleFlip(int flashIndex)
 	{
-		String backDisplay = flashcardMap.get(keyList.get(flashIndex));
+		String backDisplay;
+		if(flashIndex < keyList.size())
+		{
+			backDisplay = flashcardMap.get(keyList.get(flashIndex));
+		}
+		else
+		{
+			backDisplay = flashcardMap.get(keyList.get(flashIndex-1));
+		}
 		return backDisplay;
 	}
 	
