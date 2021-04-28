@@ -33,6 +33,9 @@ public class StudyController {
     private Button studyBegin;
 	
     @FXML
+    private Button studyFlipFront;
+    
+    @FXML
     private TextField studyText;
 
     @FXML
@@ -95,8 +98,13 @@ public class StudyController {
     public void handleFlip(ActionEvent event) throws IOException
     {
     	String back = model.handleFlip(index);
-    	
     	studyText.setText(back);
+    }
+    
+    public void handleFlipBack(ActionEvent event) throws IOException
+    {
+    	String front = model.handleDisplay(index);
+    	studyText.setText(front);
     }
 
 }

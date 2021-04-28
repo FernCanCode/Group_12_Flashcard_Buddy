@@ -180,6 +180,7 @@ public class Model {
 		System.out.println(backDisplay);
 		return backDisplay;
 	}
+	
 	//handleDisplay
 	public String handleDisplay(int flashIndex)
 	{

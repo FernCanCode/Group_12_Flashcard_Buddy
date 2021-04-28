@@ -8,11 +8,12 @@
 <AnchorPane prefHeight="291.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudyController">
    <children>
       <Button fx:id="studyExit" layoutX="14.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleExit" text="Exit Study" />
-      <Button fx:id="studyFlip" layoutX="264.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleFlip" prefHeight="25.0" prefWidth="92.0" text="Flip" />
+      <Button fx:id="studyFlip" layoutX="264.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleFlip" prefHeight="25.0" prefWidth="92.0" text="Back" />
       <TextField fx:id="studyText" layoutX="56.0" layoutY="70.0" prefHeight="152.0" prefWidth="324.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="43.0" prefHeight="17.0" prefWidth="92.0" text="Front" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="46.0" prefHeight="17.0" prefWidth="123.0" text="Flashcard Content" />
       <Button fx:id="studyPrevious" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrevious" text="Previous" />
       <Button fx:id="studyNext" layoutX="369.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNext" text="Next" />
       <Button fx:id="studyBegin" layoutX="82.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleBegin" prefHeight="25.0" prefWidth="92.0" text="Begin" />
+      <Button fx:id="studyFlipFront" layoutX="174.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleFlipBack" prefHeight="25.0" prefWidth="92.0" text="Front" />
    </children>
 </AnchorPane>
