@@ -154,7 +154,6 @@ public class Model {
 	public String handleFlip(int flashIndex)
 	{
 		String backDisplay = flashcardMap.get(keyList.get(flashIndex));
-		System.out.println(backDisplay);
 		return backDisplay;
 	}
 	
