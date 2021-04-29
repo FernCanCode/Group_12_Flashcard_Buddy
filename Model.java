@@ -181,6 +181,16 @@ public class Model {
 
 	}
 	
+	//handleDelete
+	public void handleDelete(String key)
+	{
+		flashcardMap.remove(key);
+		int kNdx = keyList.indexOf(key);
+		keyList.remove(kNdx);
+		properties.remove(key);
+		
+	}
+	
 	
 	//END StudyController.java METHODS
 }

@@ -50,6 +50,9 @@ public class StudyController {
     @FXML
     private Button studyNext;
     
+    @FXML
+    private Button studyDeleteCard;
+    
     
     public void handleExit(ActionEvent event) throws IOException
     {
@@ -105,6 +108,22 @@ public class StudyController {
     {
     	String front = model.handleDisplay(index);
     	studyText.setText(front);
+    }
+    
+    @FXML
+    void handleDelete(ActionEvent event) {
+    	String key = model.handleDisplay(index);
+    	model.handleDelete(key);
+    	if(index < model.keyList.size()) 
+    	{
+    		index = index;
+    	}
+    	else
+    	{
+    		index--;
+    	}
+    	String newDisplay = model.handleDisplay(index);
+    	studyText.setText(newDisplay);
     }
 
 }
