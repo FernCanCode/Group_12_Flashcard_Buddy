@@ -1,58 +1,72 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-/*Begin NeedGive.fxml */
-#ClickHome{
-	-fx-background-image:url("home.jpg");
+/* BEGIN MainController.java */
+#mainPane{
+	-fx-background-image:url("images/mainPane.jpg");
 	-fx-background-size:100% 100%;
 }
+   
+#ClickMake{
+	-fx-background-image:url("images/ClickMake.jpg");
+	-fx-background-size:33% 100%;
 
-#ClickAdd{
-	-fx-background-image:url("plus.jpg");
-	-fx-background-size:100% 100%;
 }
 
-#ClickMinus{
-	-fx-background-image:url("minus.jpg");
-	-fx-background-size:100% 100%;
+#ClickStudy{
+	-fx-background-image:url("images/ClickMake.jpg");
+	-fx-background-size:33% 100%;
+
 }
 
-#ClickPerson{
-	-fx-background-image:url("person.jpg");
-	-fx-background-size:100% 100%;
+#ClickExit{
+
 }
 
-#ClickCart{
-	-fx-background-image:url("cart.jpg");
-	-fx-background-size:100% 100%;
+/*END MainController.java */
+
+/*BEGIN MakeController.java */
+
+#makeBackText{
+
+}
+#makeFrontText{
+
+}
+#makeFrontCancel{
+
+}
+#makeCardCreate{
+
 }
 
-#ClickQuestion{
-	-fx-background-image:url("question.jpg");
-	-fx-background-size:100% 100%;
-}
-/*End NeedGive.fxml */
+/*END MakeController.java */
 
-/*Begin Main.fxml */
-#ClickNeed{
-	-fx-background-image:url("need.jpg");
-	-fx-background-size:100% 100%;
+/*BEGIN StudyController.java */
+
+#studyBegin{
+
+}
+#studyFlipFront{
+
+}
+#studyText{
+
+}
+#studyPrevious{
+
+}
+#studyFlip{
+
+}
+#studyExit{
+
+}
+#studyNext{
+
+}
+#studyDeleteCard{
+
 }
 
-#ClickGive{
-	-fx-background-image:url("give.jpg");
-	-fx-background-size:100% 100%;
-}
+/*END StudyController.java */
 
-#ClickInventory{
-	-fx-background-image:url("inventory.jpg");
-	-fx-background-size:100% 100%;
-}
-/*End Main.fxml */
-
-/*Begin Inventory.fxml */
-#ClickSearch{
-	-fx-background-image:url("search.jpg");
-	-fx-background-size:100% 100%;
-}
-
-/*End Inventory.fxml */
