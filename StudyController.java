@@ -24,8 +24,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class StudyController {
+	//Initializes a Model object
 	Model model = new Model();
+	//local integer used to track user navigation through flash card array
 	int index = 0;
+	
+	//Study.fxml elements
 	@FXML
 	private AnchorPane mainPane;
 	
@@ -53,7 +57,7 @@ public class StudyController {
     @FXML
     private Button studyDeleteCard;
     
-    
+    //Returns the user to Main.fxml
     public void handleExit(ActionEvent event) throws IOException
     {
     	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
@@ -64,35 +68,48 @@ public class StudyController {
     }
     
     //Handles the default display when the Study scene is first opened
+    //Allows the user to begin studying
     public void handleBegin()
     {
+    	//Passes user current flash card to the Model class
     	model.currentIndex(index);
+    	//Stores the value of the flash card front passed from the Model class in a local String
     	String defaultText = model.handleDisplay(index);
+    	//Sets the flash card front to display the correct value
     	studyText.setText(defaultText);
     }
     
     
     //Changes the flashcard to the previous card
+    //Reduces the local index value by one if applicable
     public void handlePrevious(ActionEvent event) throws IOException
     {
-    	
+    	//Calls to the Model class method
     	model.handlePrevious();
+    	//Reduces the local index value by 1 if the index is greater than 0
     	if(index > 0)
         	index--;
+    	//Stores new value for Flash Card passed from Model in a local String
     	String front = model.handleDisplay(index);
+    	//Sets correct display for flash card front
     	studyText.setText(front);
     	
     	
     }
     
     //Changes the flashcard to the next card
+    //Increases the local index value by one if applicable
     public void handleNext(ActionEvent event) throws IOException
     {
+    	//Passes local index value to the Model class
     	model.handleNext(index);
+    	//Checks that the current flash card is not the final flash card in the set of flash cards
+    	//If check is passed, increases index by 1
     	if(index < model.keyList.size())
     	index++;
+    	//Stores new value for Flash Card passed from Model in a local String
     	String front = model.handleDisplay(index);
-    	
+    	//Sets correct display for flash card front
     	studyText.setText(front);
     }
     
@@ -100,21 +117,30 @@ public class StudyController {
     //This will just change the value displayed within the TextField 'studyText'
     public void handleFlip(ActionEvent event) throws IOException
     {
+    	//Displays the flash card 'back' value to the display box
     	String back = model.handleFlip(index);
     	studyText.setText(back);
     }
     
+    //Flips the flashcard from the back to the front
     public void handleFlipBack(ActionEvent event) throws IOException
     {
+    	//Displays the flash card 'front' value to the display box
     	String front = model.handleDisplay(index);
     	studyText.setText(front);
     }
     
+    //Handles the deletion of individual flash cards
     @FXML
     void handleDelete(ActionEvent event) throws IOException {
+    	//Makes a call to the Model class to retrieve the 'key' value based on the passed index value
+    	//Stores that 'key' in local String
     	String key = model.handleDisplay(index);
+    	//Checks whether or not the 'key' exists
     	if(key != null)
+    	//Passes the key value to the Model class to handle the deletion
     	model.handleDelete(key);
+    	//Alters index based on whether deletion was successful and the change is applicable
     	if(index < model.keyList.size()) 
     	{
     		
@@ -123,7 +149,10 @@ public class StudyController {
     	{
     		index--;
     	}
+    	//Makes a call to Model class to retrieve new display based on passed Index
+    	//Stores display value in a local String
     	String newDisplay = model.handleDisplay(index);
+    	//Displays the correct value in the display box
     	studyText.setText(newDisplay);
     }
 

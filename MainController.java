@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController {
+	//Main.fxml elements
 	@FXML
 	private AnchorPane mainPane;
 

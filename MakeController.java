@@ -7,7 +7,7 @@
  */
 /*
  *  MakeController.java is a controller for this javafx project
- *  manages the user interaction with MakeBack.fxml and MakeFront.fxml
+ *  manages the user interaction with Make.fxml
  */
 package application;
 
@@ -25,13 +25,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MakeController {
+	//Instantiates Model object, model handles data manipulation
 	Model model = new Model();
-	//being erased between scenes
+	//used to store user input
 	String front="",back="";
 	
+	//Make.fxml elements
 	@FXML
 	private AnchorPane mainPane;
-
 
     @FXML
     private TextField makeBackText;
@@ -45,17 +46,16 @@ public class MakeController {
     @FXML
     private Button makeCardCreate;
 
-    //progress note
-    //try to put next and create in some method in model
-    
-
-    //Changes Scene to MakeBack
-    //Stores the text entered by the user, to be used on the front of the flash card
+    //Stores the text entered by the user, to be used on the front of the flash card and back of the flash card
+    //Returns the user back to Main.fxml once the flashcard creation is complete
     public void handleCreate(ActionEvent event) throws IOException
     {
+    	//Stores user input into local Strings
     	front = makeFrontText.getText();
     	back = makeBackText.getText();
+    	//passes off user input to Model class
     	model.handleCreate(front, back);
+    	//Returns user to Main.fxml
     	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
     	Scene scene = new Scene(mainPane); //pane you are going to SHOW
     	Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow(); //pane you are ON
@@ -63,6 +63,7 @@ public class MakeController {
     	window.show();
     }
     
+    //Returns the user to Main.fxml without creating a flash card
     public void handleCancel(ActionEvent event) throws IOException
     {
     	mainPane = FXMLLoader.load(getClass().getResource("Main.fxml")); //pane you are GOING to
