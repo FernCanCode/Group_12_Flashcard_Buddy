@@ -1,6 +1,6 @@
 /*
  *  Name:			| Fernando Canseco	| Jose Cintron		| Dhruv Patel		| Xavier Ramos		| Victor Gloria		|
- *  ab123:			| TSO262			| ZEF510			|					| XZZ259			| UES618			|
+ *  ab123:			| TSO262			| ZEF510			| ZST725			| XZZ259			| UES618			|
  *  Date:			| 4/23/21			| 4/23/21			| 4/23/21			| 4/23/21			| 4/23/21			|		
  *  Class:			| CS-3443-001		| CS-3443-001		| CS-3443-001		| CS-3443-001		| CS-3443-001		|
  *  Assignment:		| Group Project		| Group Project		| Group Project		| Group Project		| Group Project		|
@@ -111,7 +111,7 @@ public class StudyController {
     }
     
     @FXML
-    void handleDelete(ActionEvent event) {
+    void handleDelete(ActionEvent event) throws IOException {
     	String key = model.handleDisplay(index);
     	if(key != null)
     	model.handleDelete(key);
