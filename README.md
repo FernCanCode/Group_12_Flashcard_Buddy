@@ -1,13 +1,11 @@
 # Group_12_Flashcard_Buddy
 JavaFX application that creates and stores flashcards for the user to use.
 
-Tasks To Do:
-Application.css is completely empty. This needs to be filled with jpgs for the various buttons and scene elements. The scenes are currently very barebones, and we should try
-    to make it look nice and presentable before it's due.
-Stretch Goals:
-  These are features which would be nice to have included, but are not necessary for the basic function of the application
-      1) Ability for user to delete individual flashcards from their collection
-      2) Ability for user to delete entire collection all at once
-      3) Ability for user to randomize their flashcard collection for study(This one seems pretty yikes)
-      4) Any other cool features ya'll would like to add, let's really make this our own. So if there is anything you would like to see on it, just go ahead and add it.
-                As long as it works it should be fine.
+Start Up:
+    File should easily import directly intto IDE
+    Download GitHub repo and extract the zipped file contents
+    In IDE go to File -> Open Projects From File System -> <URL> for the extracted folder on your computer
+    Ensure that your IDE is compiling the project with JDK 1.8
+    
+Functionality:
+    This application allows the user to both create and delete flash cards. These flashcards remain persistant between application sessions. This application also contains a Study feature, which allows the user to study their created flashcards. Users can navigate through their ordered flashcards, click on the flashcard box to flip their flashcard, and shuffle their flashcards into a random order if they wish. Users also have a Delete All functionality available to them, which will allow the user to delete their entire flash card collection in one single action. 
